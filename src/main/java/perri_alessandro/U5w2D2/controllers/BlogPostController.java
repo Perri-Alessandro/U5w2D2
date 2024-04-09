@@ -31,20 +31,20 @@ public class BlogPostController {
 
     // GET .../blogPost/{postId}
     @GetMapping("/{postId}")
-    private BlogPost findBlogById(@PathVariable int blogId) {
+    private BlogPost findBlogById(@PathVariable long blogId) {
         return this.blogPostService.findById(blogId);
     }
 
     // PUT .../blogPost/{postId} (+ body)
     @PutMapping("/{postId}")
-    private BlogPost findBlogByIdAndUpdate(@PathVariable int postId, @RequestBody BlogPost body) {
+    private BlogPost findBlogByIdAndUpdate(@PathVariable long postId, @RequestBody BlogPost body) {
         return this.blogPostService.findByIdAndUpdate(postId, body);
     }
 
     // DELETE .../blogPost/{postId}
     @DeleteMapping("/{postId}")
     @ResponseStatus(HttpStatus.NO_CONTENT) // Status Code 204
-    private void findByBlogIdAndDelete(@PathVariable int postId) {
+    private void findByBlogIdAndDelete(@PathVariable long postId) {
         this.blogPostService.findByIdAndDelete(postId);
     }
 

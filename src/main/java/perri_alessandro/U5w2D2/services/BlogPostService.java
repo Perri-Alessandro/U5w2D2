@@ -7,6 +7,7 @@ import perri_alessandro.U5w2D2.exceptions.NotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class BlogPostService {
@@ -17,11 +18,13 @@ public class BlogPostService {
     }
 
     public BlogPost saveBlogPost(BlogPost body) {
+        Random rndm = new Random();
+        body.setId(rndm.nextInt(1, 10000));
         this.blogPostList.add(body);
         return body;
     }
 
-    public BlogPost findById(int id) {
+    public BlogPost findById(long id) {
         BlogPost trovato = null;
         for (BlogPost aut : this.blogPostList) {
             if (aut.getId() == id) trovato = aut;
@@ -30,7 +33,7 @@ public class BlogPostService {
         else return trovato;
     }
 
-    public BlogPost findByIdAndUpdate(int id, BlogPost updatedAut) {
+    public BlogPost findByIdAndUpdate(long id, BlogPost updatedAut) {
         BlogPost trovato = null;
         for (BlogPost aut : this.blogPostList) {
             if (aut.getId() == id) {
@@ -46,7 +49,7 @@ public class BlogPostService {
         else return trovato;
     }
 
-    public void findByIdAndDelete(int id) {
+    public void findByIdAndDelete(long id) {
         Iterator<BlogPost> iter = this.blogPostList.iterator();
 
         while (iter.hasNext()) {

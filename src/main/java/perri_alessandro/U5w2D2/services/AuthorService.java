@@ -7,6 +7,7 @@ import perri_alessandro.U5w2D2.exceptions.NotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class AuthorService {
@@ -17,11 +18,13 @@ public class AuthorService {
     }
 
     public Author saveAuthor(Author body) {
+        Random rndm = new Random();
+        body.setId(rndm.nextInt(1, 10000));
         this.authorList.add(body);
         return body;
     }
 
-    public Author findById(int id) {
+    public Author findById(long id) {
         Author trovato = null;
         for (Author aut : this.authorList) {
             if (aut.getId() == id) trovato = aut;
@@ -30,7 +33,7 @@ public class AuthorService {
         else return trovato;
     }
 
-    public Author findByIdAndUpdate(int id, Author updatedAut) {
+    public Author findByIdAndUpdate(long id, Author updatedAut) {
         Author trovato = null;
         for (Author aut : this.authorList) {
             if (aut.getId() == id) {
@@ -45,7 +48,7 @@ public class AuthorService {
         else return trovato;
     }
 
-    public void findByIdAndDelete(int id) {
+    public void findByIdAndDelete(long id) {
         Iterator<Author> iter = this.authorList.iterator();
 
         while (iter.hasNext()) {

@@ -29,21 +29,21 @@ public class AuthorController {
     }
 
     // GET .../authors/{authId}
-    @GetMapping("/{postId}")
-    private Author findBlogById(@PathVariable int authId) {
+    @GetMapping("/{authId}")
+    private Author findBlogById(@PathVariable long authId) {
         return this.authorService.findById(authId);
     }
 
     // PUT .../authors/{authId} (+ body)
-    @PutMapping("/{postId}")
-    private Author findBlogByIdAndUpdate(@PathVariable int authId, @RequestBody Author body) {
+    @PutMapping("/{authId}")
+    private Author findBlogByIdAndUpdate(@PathVariable long authId, @RequestBody Author body) {
         return this.authorService.findByIdAndUpdate(authId, body);
     }
 
     // DELETE .../authors/{authId}
-    @DeleteMapping("/{postId}")
+    @DeleteMapping("/{authId}")
     @ResponseStatus(HttpStatus.NO_CONTENT) // Status Code 204
-    private void findByBlogIdAndDelete(@PathVariable int authId) {
+    private void findByBlogIdAndDelete(@PathVariable long authId) {
         this.authorService.findByIdAndDelete(authId);
     }
 }
