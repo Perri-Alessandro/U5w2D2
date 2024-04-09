@@ -1,4 +1,8 @@
 package perri_alessandro.U5w2D2.exceptions;
 
-public class NotFoundException {
+public class NotFoundException extends RuntimeException {
+
+    public NotFoundException(int id) {
+        super("Elemento con id " + id + " non è stato trovato.");
+    }
 }
